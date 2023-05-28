@@ -1,8 +1,15 @@
-﻿namespace bzbackend.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace bzbackend.Models
 {
     public class Role
     {
-        public int id { get; set; }
+        [Key]
+        public int Roleid { get; set; }
+
+        [Required]
         public string nama { get; set; }
+
+        public ICollection<Users> Userss { get; set; }
     }
 }
