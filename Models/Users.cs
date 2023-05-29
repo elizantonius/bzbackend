@@ -16,6 +16,6 @@ namespace bzbackend.Models
         public ICollection<Berita> Beritas { get; set; }
 
         public int Roleid { get; set; }
-        public Role Role { get; set; } = null!;
+        public Role Role { get; set; }
     }
 }
