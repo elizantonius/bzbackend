@@ -16,6 +16,7 @@ namespace bzbackend.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<Sektor> Sektors { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<JIbadah> JIbadahs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,11 @@ namespace bzbackend.Data
 
             modelBuilder.Entity<Users>()
                 .HasMany(r => r.Renungans)
+                .WithOne(u => u.Users)
+                .HasForeignKey(u => u.Usersid);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(ji => ji.JIbadahs)
                 .WithOne(u => u.Users)
                 .HasForeignKey(u => u.Usersid);
 

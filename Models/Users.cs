@@ -14,6 +14,7 @@ namespace bzbackend.Models
 
         public ICollection<Renungan> Renungans { get; set; }
         public ICollection<Berita> Beritas { get; set; }
+        public ICollection<JIbadah> JIbadahs { get; set; }
 
         public int Roleid { get; set; }
         public Role Role { get; set; }
