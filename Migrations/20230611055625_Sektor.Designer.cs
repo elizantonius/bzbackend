@@ -12,7 +12,7 @@ using bzbackend.Data;
 namespace bzbackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230530144247_Sektor")]
+    [Migration("20230611055625_Sektor")]
     partial class Sektor
     {
         /// <inheritdoc />
@@ -56,6 +56,39 @@ namespace bzbackend.Migrations
                     b.HasIndex("Usersid");
 
                     b.ToTable("Beritas");
+                });
+
+            modelBuilder.Entity("bzbackend.Models.JIbadah", b =>
+                {
+                    b.Property<int>("JIbadahId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JIbadahId"));
+
+                    b.Property<int>("Usersid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("liturgos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("namakel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pelayan")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("tanggal")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("JIbadahId");
+
+                    b.HasIndex("Usersid");
+
+                    b.ToTable("JIbadahs");
                 });
 
             modelBuilder.Entity("bzbackend.Models.Jemaat", b =>
@@ -162,8 +195,9 @@ namespace bzbackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Sektorid"));
 
-                    b.Property<int>("nama")
-                        .HasColumnType("int");
+                    b.Property<string>("nama")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Sektorid");
 
@@ -208,6 +242,17 @@ namespace bzbackend.Migrations
                 {
                     b.HasOne("bzbackend.Models.Users", "Users")
                         .WithMany("Beritas")
+                        .HasForeignKey("Usersid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("bzbackend.Models.JIbadah", b =>
+                {
+                    b.HasOne("bzbackend.Models.Users", "Users")
+                        .WithMany("JIbadahs")
                         .HasForeignKey("Usersid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -261,6 +306,8 @@ namespace bzbackend.Migrations
             modelBuilder.Entity("bzbackend.Models.Users", b =>
                 {
                     b.Navigation("Beritas");
+
+                    b.Navigation("JIbadahs");
 
                     b.Navigation("Renungans");
                 });

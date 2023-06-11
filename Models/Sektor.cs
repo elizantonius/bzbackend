@@ -7,7 +7,7 @@ namespace bzbackend.Models
         [Key]
         public int Sektorid { get; set; }
         [Required]
-        public int nama { get; set; }
+        public string nama { get; set; }
 
         public ICollection<Jemaat> Jemaats { get; set; }
     }

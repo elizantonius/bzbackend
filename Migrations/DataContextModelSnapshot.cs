@@ -192,8 +192,9 @@ namespace bzbackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Sektorid"));
 
-                    b.Property<int>("nama")
-                        .HasColumnType("int");
+                    b.Property<string>("nama")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Sektorid");
 
