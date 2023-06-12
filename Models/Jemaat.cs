@@ -9,7 +9,7 @@ namespace bzbackend.Models
 
         [Required]
         public string nama { get; set; }
-        public string alamat { get; set;}
+        public string alamat { get; set; }
         public string pekerjaan { get; set; }
         public DateTime tglkelahiran { get; set; }
         public string golongandarah { get; set; }

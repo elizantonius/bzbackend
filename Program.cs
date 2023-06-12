@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using bzbackend.Data;
 using bzbackend.Interfaces;
 using bzbackend.Repository;
+using bzbackend.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IBeritaRepository, BeritaRepository>();
-builder.Services.AddScoped<IJemaatRepository, JemaatRepository>();
 builder.Services.AddScoped<IJIbadahRepository, JIbadahRepository>();
+builder.Services.AddScoped<IJemaatRepository, JemaatRepository>();
 builder.Services.AddScoped<IRenunganRepository, RenunganRepository>();
 builder.Services.AddScoped<IRole, RoleRepository>();
 builder.Services.AddScoped<ISektor, SektorRepository>();

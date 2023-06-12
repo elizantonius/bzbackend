@@ -4,6 +4,10 @@ namespace bzbackend.Interfaces
 {
     public interface IJemaatRepository
     {
-        ICollection<Jemaat> GetJemaats();
+        ICollection<Jemaat> Get();
+        Task<Jemaat> GetById(int id);
+        Task<Jemaat> Post(Jemaat value);
+        Task<bool> Put(int id, Jemaat value);
+        Task<bool> Delete(int id);
     }
 }
