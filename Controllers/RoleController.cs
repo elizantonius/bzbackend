@@ -1,6 +1,7 @@
 ﻿using bzbackend.Data;
 using bzbackend.Interfaces;
 using bzbackend.Models;
+using bzbackend.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bzbackend.Controllers
@@ -9,25 +10,82 @@ namespace bzbackend.Controllers
     [ApiController]
     public class RoleController : Controller
     {
-        private readonly IRole _rolerepository;
+        private readonly IRepository<Role> _roleRepository;
         private readonly DataContext context;
 
-        public RoleController(IRole rolerepository, DataContext context)
+        public RoleController(IRepository<Role> roleRepository, DataContext context)
         {
-            _rolerepository = rolerepository;
-            
+            _roleRepository = roleRepository;
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Role>))]
-
-        public IActionResult GetRoles()
+       
+        public IEnumerable<Role> Get() 
         {
-            var role = _rolerepository.GetRoles();
-            if(!ModelState.IsValid)
-                return BadRequest(ModelState);
-            return Ok(role);
+            var result = _roleRepository.Get();
+            return result.AsEnumerable();
         }
 
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetById(int id) 
+        {
+            try
+            {
+                var role = await _roleRepository.GetById(id);
+                ArgumentNullException.ThrowIfNull(role, "Data Role tidak ditemukan");
+                return Ok(role);
+            }
+            catch(System.Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
+           
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> Post([FromBody] Role value )
+        {
+            try
+            {
+                var result = await _roleRepository.Post(value);
+                return Ok(result);
+            }
+            catch(System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(int id, [FromBody] Role value)
+        {
+            try
+            {
+                var result = await _roleRepository.Put(id, value);
+                return Ok(result);
+            }
+            catch (System.Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var result = await _roleRepository.Delete(id);
+                return Ok(result);
+            }
+            catch (System.Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
