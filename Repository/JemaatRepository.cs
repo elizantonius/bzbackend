@@ -13,7 +13,7 @@ namespace bzbackend.Repository
             _context = context;
         }
 
-        public ICollection<Jemaat> Get()
+        public ICollection<Jemaat> GetJemaat()
         {
             return _context.Jemaats.OrderBy(j => j.Jemaatid).ToList();
         }
