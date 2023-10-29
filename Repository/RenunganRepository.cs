@@ -17,6 +17,11 @@ namespace bzbackend.Repository
         {
             return _context.Renungans.OrderBy(r => r.Renunganid).ToList();
         }
+
+        public Task<Renungan> GetById(int id)
+        {
+            return Task.FromResult(_context.Renungans.FirstOrDefault(r => r.Renunganid == id));
+        }
     }
     
 }

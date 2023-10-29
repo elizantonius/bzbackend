@@ -28,5 +28,19 @@ namespace bzbackend.Controllers
                 BadRequest(ModelState);
             return Ok(renungan);
         }
+        [HttpGet("{Renunganid}")]
+        public async Task<ActionResult<Renungan>> GetById(int id)
+        {
+            try
+            {
+                var hasil = await _renunganRepository.GetById(id);
+                if (hasil == null) return NotFound();
+                return hasil;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
+            }
+        }
     }
 }

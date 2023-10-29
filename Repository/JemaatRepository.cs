@@ -76,7 +76,32 @@ namespace bzbackend.Repository
 
         }
 
+        public ICollection<Jemaat> GetJemaat(int jemaatId)
+        {
+            throw new NotImplementedException();
+        }
 
+        public bool JemaatExists(int jemaatId)
+        {
+            throw new NotImplementedException();
+        }
+
+        object IJemaatRepository.GetJemaat()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CreateJemaat(Jemaat jemaat)
+        {
+            _context.Add(jemaat);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true:false;
+        }
     }
 }
 

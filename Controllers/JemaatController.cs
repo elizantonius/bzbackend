@@ -28,5 +28,22 @@ namespace bzbackend.Controllers
                 return BadRequest(ModelState);
             return Ok(jemaats);
         }
+
+        [HttpGet("{JemaatId}")]
+        [ProducesResponseType(200, Type = typeof(Jemaat))]
+        [ProducesResponseType(400)]
+
+        public IActionResult GetJemaat(int SektorId)
+        {
+            if (!_jemaatRepository.JemaatExists(SektorId))
+                return NotFound();
+
+            var jemaat = _jemaatRepository.GetJemaat(SektorId);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(jemaat);
+        }
+
     }
 }

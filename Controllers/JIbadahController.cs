@@ -28,5 +28,20 @@ namespace bzbackend.Controllers
             }
             return Ok(jib);
         }
+
+        [HttpGet("{JIbadahId}")]
+        public async Task<ActionResult<JIbadah>> GetById(int id)
+        {
+            try
+            {
+                var hasil = await _jIbadahRepository.GetById(id);
+                if (hasil == null) return NotFound();
+                return hasil;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
+            }
+        }
     }
 }

@@ -8,84 +8,39 @@ namespace bzbackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersRepository : Controller
+    public class UsersController : Controller
     {
-        private readonly IRepository<Users> _usersRepository;
+        private readonly IUsers _usersRepository;
         private readonly DataContext context;
 
-        public UsersRepository(IRepository<Users> usersrepository, DataContext context)
+        public UsersController(IUsers usersrepository, DataContext context)
         {
             _usersRepository = usersrepository;
         }
 
         [HttpGet]
-
-        public IEnumerable<Users> Get()
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Users>))]
+        public IActionResult GetUsers()
         {
-            var result = _usersRepository.Get();
-            return result.AsEnumerable();
+            var pengguna = _usersRepository.GetUsers();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(pengguna);
         }
-
-
-        [HttpGet("{id}")]
-
-        public async Task<IActionResult> GetById(int id)
+        [HttpGet("{Usersid}")]
+        public async Task<ActionResult<Users>> GetById(int id)
         {
             try
             {
-                var users = await _usersRepository.GetById(id);
-                ArgumentNullException.ThrowIfNull(users, "Data User/Pengguna tidak ditemukan!");
-                return Ok(users);
-            }
-            catch (System.Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+                var hasil = await _usersRepository.GetById(id);
+                if (hasil == null) return NotFound();
+                return hasil;
 
-        }
-
-        [HttpPost]
-
-        public async Task<IActionResult> Post([FromBody] Users value)
-        {
-            try
-            {
-                var result = await _usersRepository.Post(value);
-                return Ok(result);
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPut]
-        public async Task<IActionResult> Put(int id, [FromBody] Users value)
-        {
-            try
-            {
-                var result = await _usersRepository.Put(id, value);
-                return Ok(result);
-            }
-            catch (System.Exception ex)
-            {
-
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            try
-            {
-                var result = await _usersRepository.Delete(id);
-                return Ok(result);
-            }
-            catch (System.Exception ex)
-            {
-
-                return BadRequest(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
             }
         }
     }

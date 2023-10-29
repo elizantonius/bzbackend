@@ -27,5 +27,20 @@ namespace bzbackend.Controllers
                 return BadRequest(ModelState);
             return Ok(bertas);
         }
+
+        [HttpGet("{BeritaId}")]
+        public async Task<ActionResult<Berita>> GetById(int id)
+        {
+            try
+            {
+                var hasil = await _beritaRepository.GetById(id);
+                if (hasil == null) return NotFound();
+                return hasil;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
+            }
+        }
     }
 }

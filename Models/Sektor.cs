@@ -10,5 +10,7 @@ namespace bzbackend.Models
         public string nama { get; set; }
 
         public ICollection<Jemaat> Jemaats { get; set; }
+        public int Id { get; internal set; }
+       
     }
 }

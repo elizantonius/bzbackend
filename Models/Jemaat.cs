@@ -15,7 +15,7 @@ namespace bzbackend.Models
         public string golongandarah { get; set; }
         public string nokontak { get; set; }
 
-        public int Sektorid { get; set; }
-        public Sektor Sektor { get; set; }
+        public ICollection<Sektor> Sektorid { get; set; }
+        public Sektor Sektor{ get; set; }
     }
 }

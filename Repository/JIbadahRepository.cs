@@ -16,5 +16,10 @@ namespace bzbackend.Repository
         {
             return _context.JIbadahs.OrderBy(ji => ji.JIbadahId).ToList();
         }
+
+        public Task<JIbadah> GetById(int id)
+        {
+            return Task.FromResult(_context.JIbadahs.FirstOrDefault(ji => ji.JIbadahId == id));
+        }
     }
 }

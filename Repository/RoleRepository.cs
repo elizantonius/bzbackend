@@ -12,6 +12,12 @@ namespace bzbackend.Repository
         {
             _context = context;
         }
+
+        public Task<Role> GetRoleId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public ICollection<Role> GetRoles()
         {
             return _context.Roles.OrderBy(r => r.Roleid).ToList();

@@ -30,5 +30,21 @@ namespace bzbackend.Controllers
             }
             return Ok(sektor);
         }
+        [HttpGet("{Sektorid}")]
+        public async Task<ActionResult<Sektor>> GetById(int id)
+        {
+            try
+            {
+                var hasil = await _sektor.GetById(id);
+                if (hasil == null) return NotFound();
+                return hasil;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
+            }
+
+        }
+      
     }
 }
