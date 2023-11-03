@@ -1,6 +1,7 @@
 ﻿using bzbackend.Data;
 using bzbackend.Interfaces;
 using bzbackend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bzbackend.Repository
 {
@@ -13,14 +14,21 @@ namespace bzbackend.Repository
             _context = context;
         }
 
-        public Task<Role> GetRoleId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public ICollection<Role> GetRoles()
         {
             return _context.Roles.OrderBy(r => r.Roleid).ToList();
         }
+
+        public Role GetRole(int Roleid)
+        {
+            return _context.Roles.Where(r => r.Roleid == Roleid).FirstOrDefault();
+        }
+
+        public Role GetRole(string nama)
+        {
+            return _context.Roles.Where(r => r.nama == nama).FirstOrDefault();
+        }
+
+       
     }
 }

@@ -29,20 +29,20 @@ namespace bzbackend.Controllers
             return Ok(jemaats);
         }
 
-        [HttpGet("{JemaatId}")]
-        [ProducesResponseType(200, Type = typeof(Jemaat))]
-        [ProducesResponseType(400)]
 
-        public IActionResult GetJemaat(int SektorId)
+        [HttpPost]
+        public async Task<ActionResult<Jemaat>> Post(Jemaat jemaat)
         {
-            if (!_jemaatRepository.JemaatExists(SektorId))
-                return NotFound();
-
-            var jemaat = _jemaatRepository.GetJemaat(SektorId);
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            return Ok(jemaat);
+            try
+            {
+                if (jemaat == null)
+                    return BadRequest();
+                var tambah = await _jemaatRepository.Post(jemaat);
+                return CreatedAtAction(nameof(GetJemaat), new { id = tambah.Jemaatid}, Post);
+            } catch (Exception) 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Terjadi kesalahan saat membuat catatan Jemaat baru");
+            }
         }
 
     }

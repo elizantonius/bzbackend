@@ -5,6 +5,7 @@ namespace bzbackend.Interfaces
     public interface IRole
     {
         ICollection<Role> GetRoles();
-        Task<Role> GetRoleId(int id);
+        Role GetRole(int Roleid);
+        Role GetRole(string nama);
     }
 }

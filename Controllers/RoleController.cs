@@ -3,13 +3,15 @@ using bzbackend.Interfaces;
 using bzbackend.Models;
 using bzbackend.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Permissions;
 
 namespace bzbackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
 
-    public class RoleController : Controller
+    public class RoleController : ControllerBase
     {
         private readonly IRole _role;
         private readonly DataContext context;
@@ -21,33 +23,13 @@ namespace bzbackend.Controllers
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Role>))]
-
-        public IActionResult GetRoles()
+        public IActionResult GetRole()
         {
             var role = _role.GetRoles();
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
             return Ok(role);
-
         }
-
-        [HttpGet("{RoleId}")]
-        public async Task<ActionResult<Role>> GetRoleId(int id)
-        {
-            try
-            {
-                var hasil = await _role.GetRoleId(id);
-                if (hasil == null) return NotFound();
-                return hasil;
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
-            }
-        }
-        
 
     }
 }
