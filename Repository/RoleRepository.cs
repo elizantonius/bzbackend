@@ -29,6 +29,9 @@ namespace bzbackend.Repository
             return _context.Roles.Where(r => r.nama == nama).FirstOrDefault();
         }
 
-       
+        public Task<Role> GetById(int Roleid)
+        {
+            return Task.FromResult(_context.Roles.FirstOrDefault(r=> r.Roleid==Roleid));
+        }
     }
 }

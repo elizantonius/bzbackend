@@ -31,5 +31,20 @@ namespace bzbackend.Controllers
             return Ok(role);
         }
 
+        [HttpGet("{Roleid}")]
+        public async Task<ActionResult<Role>> GetById(int Roleid)
+        {
+            try
+            {
+                var hasil = await _role.GetById(Roleid);
+                if (hasil == null) return NotFound();
+                return hasil;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
+            }
+        }
+
     }
 }

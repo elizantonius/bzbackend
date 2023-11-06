@@ -1,6 +1,7 @@
 ﻿using bzbackend.Data;
 using bzbackend.Interfaces;
 using bzbackend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bzbackend.Repository
 {

@@ -7,5 +7,7 @@ namespace bzbackend.Interfaces
         ICollection<Role> GetRoles();
         Role GetRole(int Roleid);
         Role GetRole(string nama);
+
+        Task <Role> GetById(int Roleid);
     }
 }
