@@ -166,3 +166,7 @@ E:\Workstation\bzbackend\obj\Debug\net7.0\refint\bzbackend.dll
 E:\Workstation\bzbackend\obj\Debug\net7.0\bzbackend.pdb
 E:\Workstation\bzbackend\obj\Debug\net7.0\bzbackend.genruntimeconfig.cache
 E:\Workstation\bzbackend\obj\Debug\net7.0\ref\bzbackend.dll
+E:\Workstation\bzbackend\obj\Debug\net7.0\bzbackend.Pomelo.EntityFrameworkCore.MySql.src.EFCore.MySql.NTS.Properties.MySqlNTSStrings.resources
+E:\Workstation\bzbackend\obj\Debug\net7.0\bzbackend.Pomelo.EntityFrameworkCore.MySql.src.EFCore.MySql.Properties.MySqlJsonStrings.resources
+E:\Workstation\bzbackend\obj\Debug\net7.0\bzbackend.Pomelo.EntityFrameworkCore.MySql.src.EFCore.MySql.Properties.MySqlStrings.resources
+E:\Workstation\bzbackend\obj\Debug\net7.0\bzbackend.csproj.GenerateResource.cache
