@@ -46,5 +46,23 @@ namespace bzbackend.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Role>> AddRole(Role role)
+        {
+            try
+            {
+                if (role == null)
+                    return BadRequest();
+
+                var addRole = await _role.AddRole(role);
+
+                return CreatedAtAction(nameof(GetById), new { id = addRole.Roleid }, addRole);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Gagal menambahkan data Role ke Database");
+            }
+        }
+
     }
 }

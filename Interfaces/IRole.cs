@@ -7,7 +7,10 @@ namespace bzbackend.Interfaces
         ICollection<Role> GetRoles();
         Role GetRole(int Roleid);
         Role GetRole(string nama);
-
         Task <Role> GetById(int Roleid);
+        Task <Role> AddRole(Role role);
+        Task<Role> Update(Role role);
+        void DeleteRole(int Roleid);
+        
     }
 }

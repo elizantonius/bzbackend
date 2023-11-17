@@ -33,5 +33,22 @@ namespace bzbackend.Repository
         {
             return Task.FromResult(_context.Roles.FirstOrDefault(r=> r.Roleid==Roleid));
         }
+
+        public async Task<Role> AddRole(Role role)
+        {
+            var hasil = await _context.Roles.AddAsync(role);
+            await _context.SaveChangesAsync();
+            return hasil.Entity;
+        }
+
+        public Task<Role> Update(Role role)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteRole(int Roleid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

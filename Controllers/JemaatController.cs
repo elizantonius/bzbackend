@@ -3,7 +3,7 @@ using bzbackend.Interfaces;
 using bzbackend.Repository;
 using bzbackend.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.Entity;
+//using System.Data.Entity;
 
 namespace bzbackend.Controllers
 {
