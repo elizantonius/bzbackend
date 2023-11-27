@@ -2,12 +2,20 @@ using Microsoft.EntityFrameworkCore;
 using bzbackend.Data;
 using bzbackend.Interfaces;
 using bzbackend.Repository;
-using bzbackend.Migrations;
+//using bzbackend.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var MyAllowSpecificOrigins = "MyAllowSpecificOrigins";
 // Add services to the container.
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("*"
+                                              );
+                      });
+});
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
     throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
@@ -36,7 +44,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

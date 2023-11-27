@@ -11,7 +11,7 @@ using bzbackend.Data;
 namespace bzbackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231108104824_Initial")]
+    [Migration("20231127063947_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

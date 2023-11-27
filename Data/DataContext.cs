@@ -30,10 +30,6 @@ namespace bzbackend.Data
                 .WithOne(s => s.Sektor)
                 .HasForeignKey(s => s.Sektorid);
 
-            modelBuilder.Entity<Role>()
-                .HasMany(u => u.Users)
-                .WithOne(r => r.Role)
-                .HasForeignKey(r => r.Roleid);
 
             modelBuilder.Entity<Users>()
                 .HasMany(r => r.Renungans)

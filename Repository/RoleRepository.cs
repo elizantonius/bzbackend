@@ -16,7 +16,7 @@ namespace bzbackend.Repository
 
         public ICollection<Role> GetRoles()
         {
-            return _context.Roles.OrderBy(r => r.Roleid).ToList();
+            return _context.Roles.ToList();
         }
 
         public Role GetRole(int Roleid)
@@ -26,7 +26,7 @@ namespace bzbackend.Repository
 
         public Role GetRole(string nama)
         {
-            return _context.Roles.Where(r => r.nama == nama).FirstOrDefault();
+            return _context.Roles.Where(r => r.nama.Contains(nama)).FirstOrDefault();
         }
 
         public Task<Role> GetById(int Roleid)
@@ -41,14 +41,23 @@ namespace bzbackend.Repository
             return hasil.Entity;
         }
 
-        public Task<Role> Update(Role role)
+        public async Task<Role> Update(Role role)
         {
-            throw new NotImplementedException();
+
+            var dataindatabase = _context.Roles.SingleOrDefault(x=>x.Roleid==role.Roleid);
+            dataindatabase.nama = role.nama;
+            _context.SaveChangesAsync();
+            return dataindatabase;
+            
         }
 
-        public void DeleteRole(int Roleid)
+        public Task<bool> DeleteRole(int Roleid)
         {
-            throw new NotImplementedException();
+            var data = _context.Roles.Find(Roleid);
+            _context.Roles.Remove(data);
+            _context.SaveChanges();
+
+            return Task.FromResult(true);
         }
     }
 }

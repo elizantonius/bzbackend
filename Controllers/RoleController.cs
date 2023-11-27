@@ -23,7 +23,7 @@ namespace bzbackend.Controllers
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Role>))]
-        public IActionResult GetRole()
+        public IActionResult Get()
         {
             var role = _role.GetRoles();
             if (!ModelState.IsValid)
@@ -31,12 +31,12 @@ namespace bzbackend.Controllers
             return Ok(role);
         }
 
-        [HttpGet("{Roleid}")]
-        public async Task<ActionResult<Role>> GetById(int Roleid)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Role>> GetById(int id)
         {
             try
             {
-                var hasil = await _role.GetById(Roleid);
+                var hasil = await _role.GetById(id);
                 if (hasil == null) return NotFound();
                 return hasil;
             }
@@ -47,7 +47,7 @@ namespace bzbackend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Role>> AddRole(Role role)
+        public async Task<ActionResult<Role>> Post(Role role)
         {
             try
             {
@@ -56,12 +56,44 @@ namespace bzbackend.Controllers
 
                 var addRole = await _role.AddRole(role);
 
-                return CreatedAtAction(nameof(GetById), new { id = addRole.Roleid }, addRole);
+                return Ok(addRole);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Gagal menambahkan data Role ke Database");
+                return BadRequest (ex.Message);
             }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Role>> Put(int id, Role role)
+        {
+            
+            try
+            {
+              if(id != role.Roleid)
+            {
+                return BadRequest();
+            }
+           var baru = await _role.Update(role);
+           return Ok(baru);
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Role>> Deleted(int id)
+        {
+            var hapusdata = await _role.DeleteRole(id);
+            if(hapusdata == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
 
     }
