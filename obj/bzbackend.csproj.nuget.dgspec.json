@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Workstation\\bzbackend\\bzbackend.csproj": {}
+    "E:\\Workstation\\New Apps\\bzbackend\\bzbackend.csproj": {}
   },
   "projects": {
-    "E:\\Workstation\\bzbackend\\bzbackend.csproj": {
+    "E:\\Workstation\\New Apps\\bzbackend\\bzbackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Workstation\\bzbackend\\bzbackend.csproj",
+        "projectUniqueName": "E:\\Workstation\\New Apps\\bzbackend\\bzbackend.csproj",
         "projectName": "bzbackend",
-        "projectPath": "E:\\Workstation\\bzbackend\\bzbackend.csproj",
+        "projectPath": "E:\\Workstation\\New Apps\\bzbackend\\bzbackend.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "E:\\Workstation\\bzbackend\\obj\\",
+        "outputPath": "E:\\Workstation\\New Apps\\bzbackend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
