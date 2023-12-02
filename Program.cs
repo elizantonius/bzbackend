@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using bzbackend.Data;
 using bzbackend.Interfaces;
 using bzbackend.Repository;
-using bzbackend.Migrations;
+//using bzbackend.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 

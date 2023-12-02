@@ -6,5 +6,8 @@ namespace bzbackend.Interfaces
     {
         ICollection<Renungan> GetRenungans();
         Task<Renungan> GetById(int id);
+        Task<Renungan> Post(Renungan renungan);
+        Task<Renungan> Put(Renungan renungan);
+        Task<bool> Delete(int Renunganid);
     }
 }

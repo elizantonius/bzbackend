@@ -14,7 +14,7 @@ namespace bzbackend.Models
         public string doa { get; set; }
 
         public int Usersid { get; set; }
-        public Users Users { get; set; } = null!;
+        //public Users Users { get; set; } = null!;
 
     }
 }

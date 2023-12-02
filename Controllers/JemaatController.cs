@@ -38,11 +38,43 @@ namespace bzbackend.Controllers
                 if (jemaat == null)
                     return BadRequest();
                 var tambah = await _jemaatRepository.Post(jemaat);
-                return CreatedAtAction(nameof(GetJemaat), new { id = tambah.Jemaatid}, Post);
-            } catch (Exception) 
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Terjadi kesalahan saat membuat catatan Jemaat baru");
+                return Ok(tambah);
             }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Jemaat>> Put(int id, Jemaat jemaat)
+        {
+            try
+            {
+                if(id != jemaat.Jemaatid)
+                {
+                    return BadRequest();
+                }
+
+                var databaru = await _jemaatRepository.Put(jemaat);
+                return Ok(databaru);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Jemaat>> Deleted(int id)
+        {
+            var hapusdata = await _jemaatRepository.Delete(id);
+            if(hapusdata == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
 
     }

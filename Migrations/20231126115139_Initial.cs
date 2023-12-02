@@ -90,8 +90,7 @@ namespace bzbackend.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     nokontak = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Sektorid = table.Column<int>(type: "int", nullable: false),
-                    Sektorid1 = table.Column<int>(type: "int", nullable: true)
+                    Sektorid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,11 +101,6 @@ namespace bzbackend.Migrations
                         principalTable: "Sektors",
                         principalColumn: "Sektorid",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Jemaats_Sektors_Sektorid1",
-                        column: x => x.Sektorid1,
-                        principalTable: "Sektors",
-                        principalColumn: "Sektorid");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -202,12 +196,7 @@ namespace bzbackend.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Jemaats_Sektorid",
                 table: "Jemaats",
-                column: "Sektorid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Jemaats_Sektorid1",
-                table: "Jemaats",
-                column: "Sektorid1",
+                column: "Sektorid",
                 unique: true);
 
             migrationBuilder.CreateIndex(

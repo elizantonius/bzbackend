@@ -11,7 +11,7 @@ using bzbackend.Data;
 namespace bzbackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231108104824_Initial")]
+    [Migration("20231126115139_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -93,9 +93,6 @@ namespace bzbackend.Migrations
                     b.Property<int>("Sektorid")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Sektorid1")
-                        .HasColumnType("int");
-
                     b.Property<string>("alamat")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -121,9 +118,7 @@ namespace bzbackend.Migrations
 
                     b.HasKey("Jemaatid");
 
-                    b.HasIndex("Sektorid");
-
-                    b.HasIndex("Sektorid1")
+                    b.HasIndex("Sektorid")
                         .IsUnique();
 
                     b.ToTable("Jemaats");
@@ -230,7 +225,7 @@ namespace bzbackend.Migrations
             modelBuilder.Entity("bzbackend.Models.Berita", b =>
                 {
                     b.HasOne("bzbackend.Models.Users", "Users")
-                        .WithMany("Beritas")
+                        .WithMany()
                         .HasForeignKey("Usersid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -241,7 +236,7 @@ namespace bzbackend.Migrations
             modelBuilder.Entity("bzbackend.Models.JIbadah", b =>
                 {
                     b.HasOne("bzbackend.Models.Users", "Users")
-                        .WithMany("JIbadahs")
+                        .WithMany()
                         .HasForeignKey("Usersid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -252,14 +247,10 @@ namespace bzbackend.Migrations
             modelBuilder.Entity("bzbackend.Models.Jemaat", b =>
                 {
                     b.HasOne("bzbackend.Models.Sektor", "Sektor")
-                        .WithMany("Jemaats")
-                        .HasForeignKey("Sektorid")
+                        .WithOne("jemaat")
+                        .HasForeignKey("bzbackend.Models.Jemaat", "Sektorid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("bzbackend.Models.Sektor", null)
-                        .WithOne("jemaat")
-                        .HasForeignKey("bzbackend.Models.Jemaat", "Sektorid1");
 
                     b.Navigation("Sektor");
                 });
@@ -267,7 +258,7 @@ namespace bzbackend.Migrations
             modelBuilder.Entity("bzbackend.Models.Renungan", b =>
                 {
                     b.HasOne("bzbackend.Models.Users", "Users")
-                        .WithMany("Renungans")
+                        .WithMany()
                         .HasForeignKey("Usersid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -278,7 +269,7 @@ namespace bzbackend.Migrations
             modelBuilder.Entity("bzbackend.Models.Users", b =>
                 {
                     b.HasOne("bzbackend.Models.Role", "Role")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("Roleid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -286,26 +277,10 @@ namespace bzbackend.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("bzbackend.Models.Role", b =>
-                {
-                    b.Navigation("Users");
-                });
-
             modelBuilder.Entity("bzbackend.Models.Sektor", b =>
                 {
-                    b.Navigation("Jemaats");
-
                     b.Navigation("jemaat")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("bzbackend.Models.Users", b =>
-                {
-                    b.Navigation("Beritas");
-
-                    b.Navigation("JIbadahs");
-
-                    b.Navigation("Renungans");
                 });
 #pragma warning restore 612, 618
         }

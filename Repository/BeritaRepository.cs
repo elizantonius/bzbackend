@@ -13,14 +13,9 @@ namespace bzbackend.Repository
                 
         }
 
-        public Task<bool> Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public ICollection<Berita> GetBeritas()
         {
-            return _context.Beritas.OrderBy(b => b.Beritaid).ToList();
+            return _context.Beritas.ToList();
         }
 
         public Task<Berita> GetById(int  id)
@@ -33,14 +28,32 @@ namespace bzbackend.Repository
             throw new NotImplementedException();
         }
         */
-        public Task<Berita> Post(Berita value)
+        public async Task<Berita> Post(Berita berita)
         {
-            throw new NotImplementedException();
+            var hasil = await _context.Beritas.AddAsync(berita);
+            await _context.SaveChangesAsync();
+            return hasil.Entity;
         }
 
-        public Task<bool> Put(int id, Berita value)
+        public async Task<Berita> Put(Berita berita)
         {
-            throw new NotImplementedException();
+            var dataindb = _context.Beritas.SingleOrDefault(x=>x.Beritaid==berita.Beritaid);
+            dataindb.judul = berita.judul;
+            dataindb.gambar = berita.gambar;
+            dataindb.isi = berita.isi;
+            dataindb.tanggal = berita.tanggal;
+            dataindb.Usersid = berita.Usersid;
+            _context.SaveChangesAsync();
+            return dataindb;
+        }
+
+        public Task<bool> Delete(int id)
+        {
+            var data = _context.Beritas.Find(id);
+            _context.Beritas.Remove(data);
+            _context.SaveChanges();
+
+            return Task.FromResult(true);
         }
     }
 }

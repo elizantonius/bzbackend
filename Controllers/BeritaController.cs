@@ -42,5 +42,50 @@ namespace bzbackend.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
             }
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Berita>> Post(Berita berita)
+        {
+            try
+            {
+                if (berita == null)
+                    return BadRequest();
+                var tambah = await _beritaRepository.Post(berita);
+                return Ok(tambah);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Berita>> Put(int id, Berita berita)
+        {
+            try
+            {
+                if(id != berita.Beritaid)
+                {
+                    return BadRequest();
+                }
+                var baru = await _beritaRepository.Put(berita);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Berita>> Deleted(int id)
+        {
+            var hapusdata = await _beritaRepository.Delete(id);
+            if(hapusdata == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
     }
 }

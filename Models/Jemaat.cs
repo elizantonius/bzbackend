@@ -17,6 +17,6 @@ namespace bzbackend.Models
 
 
         public int Sektorid { get; set; }
-        public Sektor Sektor{ get; set; }
+        //public Sektor Sektor{ get; set; }
     }
 }

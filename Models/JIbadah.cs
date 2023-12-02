@@ -14,6 +14,6 @@ namespace bzbackend.Models
         public string liturgos { get; set; }
 
         public int Usersid { get; set; }
-        public Users Users { get; set; } = null!;
+        //public Users Users { get; set; } = null!;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using bzbackend.Data;
 using bzbackend.Interfaces;
 using bzbackend.Models;
+using bzbackend.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bzbackend.Controllers
@@ -42,6 +43,53 @@ namespace bzbackend.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Kesalahan saat mengambil data dari database");
             }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<JIbadah>> Post(JIbadah jibadah)
+        {
+            try
+            {
+                if (jibadah == null)
+                    return BadRequest();
+                var tambah = await _jIbadahRepository.Post(jibadah);
+                return Ok(tambah);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<JIbadah>> Put(int id, JIbadah jibadah)
+        {
+            try
+            {
+                if (id != jibadah.JIbadahId)
+                {
+                    return BadRequest();
+                }
+
+                var databaru = await _jIbadahRepository.Put(jibadah);
+                return Ok(databaru);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<JIbadah>> Deleted(int id)
+        {
+            var hapusdata = await _jIbadahRepository.Delete(id);
+            if (hapusdata == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
     }
 }

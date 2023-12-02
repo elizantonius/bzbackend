@@ -63,6 +63,33 @@ namespace bzbackend.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Gagal menambahkan data Role ke Database");
             }
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Role>> Put(int id, Role role)
+        {
+            try
+            {
+                if(id != role.Roleid)
+                {
+                    return BadRequest();
+                }
+                var baru = await _role.Update(role);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Role>> Deleted(int id)
+        {
+            var hapusdata = await _role.DeleteRole(id);
+            if(hapusdata == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
 
     }
 }

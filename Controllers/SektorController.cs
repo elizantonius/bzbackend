@@ -45,6 +45,52 @@ namespace bzbackend.Controllers
             }
 
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Sektor>> Post(Sektor sektor)
+        {
+            try
+            {
+                if (sektor == null)
+                    return BadRequest();
+                var tambah = await _sektor.Post(sektor);
+                return Ok(tambah);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Sektor>> Put(int id , Sektor sektor)
+        {
+            try
+            {
+                if(id != sektor.Sektorid)
+                {
+                    return BadRequest();
+                }
+                var baru = await _sektor.Put(sektor);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Sektor>> Deleted(int id)
+        {
+            var hapusdata = await _sektor.Delete(id);
+            if(hapusdata == null)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
       
     }
 }

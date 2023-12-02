@@ -10,6 +10,5 @@ namespace bzbackend.Models
         [Required]
         public string nama { get; set; }
 
-        public ICollection<Users> Users { get; set; }
     }
 }

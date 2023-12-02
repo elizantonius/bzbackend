@@ -10,7 +10,7 @@ namespace bzbackend.Interfaces
         Task <Role> GetById(int Roleid);
         Task <Role> AddRole(Role role);
         Task<Role> Update(Role role);
-        void DeleteRole(int Roleid);
+        Task <bool> DeleteRole(int Roleid);
         
     }
 }

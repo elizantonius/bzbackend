@@ -9,8 +9,8 @@ namespace bzbackend.Models
         [Required]
         public string nama { get; set; }
 
-        public ICollection<Jemaat> Jemaats { get; set; }
-        public Jemaat jemaat { get; set; }
+        //public ICollection<Jemaat> Jemaats { get; set; }
+        //public Jemaat jemaat { get; set; }
        
     }
 }

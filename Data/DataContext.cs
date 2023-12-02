@@ -20,6 +20,7 @@ namespace bzbackend.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            /*
             modelBuilder.Entity<Users>()
                 .HasMany(b => b.Beritas)
                 .WithOne(u => u.Users)
@@ -30,10 +31,6 @@ namespace bzbackend.Data
                 .WithOne(s => s.Sektor)
                 .HasForeignKey(s => s.Sektorid);
 
-            modelBuilder.Entity<Role>()
-                .HasMany(u => u.Users)
-                .WithOne(r => r.Role)
-                .HasForeignKey(r => r.Roleid);
 
             modelBuilder.Entity<Users>()
                 .HasMany(r => r.Renungans)
@@ -44,6 +41,7 @@ namespace bzbackend.Data
                 .HasMany(ji => ji.JIbadahs)
                 .WithOne(u => u.Users)
                 .HasForeignKey(u => u.Usersid);
+            */
 
         }
     }

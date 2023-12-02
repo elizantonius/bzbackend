@@ -6,8 +6,8 @@ namespace bzbackend.Interfaces
     {
         ICollection<Jemaat> GetJemaat();
         Task<Jemaat> GetById(int id);
-        Task<Jemaat> Post(Jemaat value);
-        Task<bool> Put(int id, Jemaat value);
+        Task<Jemaat> Post(Jemaat jemaat);
+        Task<Jemaat> Put(Jemaat jemaat);
         Task<bool> Delete(int id);
     }
 }

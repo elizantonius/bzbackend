@@ -16,7 +16,7 @@ namespace bzbackend.Repository
 
         public ICollection<Jemaat> GetJemaat()
         {
-            return _context.Jemaats.OrderBy(j => j.Jemaatid).ToList();
+            return _context.Jemaats.ToList();
         }
 
 
@@ -25,58 +25,37 @@ namespace bzbackend.Repository
             return Task.FromResult(_context.Jemaats.FirstOrDefault(x => x.Jemaatid == id));
         }
 
-        public async Task<Jemaat> Post(Jemaat value)
+        public async Task<Jemaat> Post(Jemaat jemaat)
         {
-            try
-            {
-                _context.Jemaats.Add(value);
-                await _context.SaveChangesAsync();
-                return value;
-            }
-            catch (System.Exception ex)
-            {
-
-                throw new System.Exception(ex.Message);
-            }
+            var tambah = await _context.Jemaats.AddAsync(jemaat);
+            await _context.SaveChangesAsync();
+            return tambah.Entity;
 
         }
 
-        public async Task<bool> Put(int id, Jemaat value)
+        public async Task<Jemaat> Put(Jemaat jemaat)
         {
-            try
-            {
-                var oldData = _context.Jemaats.FirstOrDefault(x => x.Jemaatid == id);
-                ArgumentNullException.ThrowIfNull(oldData, "Tidak Ditemukan");
-                _context.Entry(oldData).CurrentValues.SetValues(value);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch (System.Exception ex)
-            {
-
-                throw new System.Exception(ex.Message);
-            }
-
+            var dataindb = _context.Jemaats.SingleOrDefault(x => x.Jemaatid == jemaat.Jemaatid);
+            dataindb.nama = jemaat.nama;
+            dataindb.alamat = jemaat.alamat;
+            dataindb.pekerjaan = jemaat.pekerjaan;
+            dataindb.tglkelahiran = jemaat.tglkelahiran;
+            dataindb.golongandarah = jemaat.golongandarah;
+            dataindb.nokontak = jemaat.nokontak;
+            dataindb.Sektorid = jemaat.Sektorid;
+            _context.SaveChangesAsync();
+            return dataindb;
+            
         }
 
-        public async Task<bool> Delete(int id)
+        public  Task<bool> Delete(int id)
         {
-            try
-            {
-                var oldData = _context.Jemaats.FirstOrDefault(x => x.Jemaatid == id);
-                ArgumentNullException.ThrowIfNull(oldData, "Tidak Ditemukan");
-                _context.Jemaats.Remove(oldData);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch (System.Exception ex)
-            {
-
-                throw new System.Exception(ex.Message);
-            }
+            var data = _context.Jemaats.Find(id);
+            _context.Jemaats.Remove(data);
+            _context.SaveChanges();
+            return Task.FromResult(true);
 
         }
-
     }
 }
 

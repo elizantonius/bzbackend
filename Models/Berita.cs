@@ -14,7 +14,7 @@ namespace bzbackend.Models
         public DateTime tanggal { get; set; }
 
         public int Usersid { get; set; }
-        public Users Users { get; set; }
+        //public Users Users { get; set; }
 
     }
 }
