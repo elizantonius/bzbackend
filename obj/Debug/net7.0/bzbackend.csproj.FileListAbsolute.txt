@@ -125,3 +125,46 @@ E:\Workstation\bzbackend\obj\Debug\net7.0\bzbackend.genruntimeconfig.cache
 E:\Workstation\bzbackend\obj\Debug\net7.0\ref\bzbackend.dll
 E:\Workstation\bzbackend\bin\Debug\net7.0\MySqlConnector.dll
 E:\Workstation\bzbackend\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\appsettings.Development.json
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\appsettings.json
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\bzbackend.exe
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\bzbackend.deps.json
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\bzbackend.runtimeconfig.json
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\bzbackend.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\bzbackend.pdb
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Humanizer.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Microsoft.OpenApi.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Mono.TextTemplating.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\MySqlConnector.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Workstation\New Apps\bzbackend\bin\Debug\net7.0\System.CodeDom.dll
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.csproj.AssemblyReference.cache
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.GeneratedMSBuildEditorConfig.editorconfig
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.AssemblyInfoInputs.cache
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.AssemblyInfo.cs
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.csproj.CoreCompileInputs.cache
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.MvcApplicationPartsAssemblyInfo.cs
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.MvcApplicationPartsAssemblyInfo.cache
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\staticwebassets\msbuild.bzbackend.Microsoft.AspNetCore.StaticWebAssets.props
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\staticwebassets\msbuild.build.bzbackend.props
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.bzbackend.props
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.bzbackend.props
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\staticwebassets.pack.json
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\staticwebassets.build.json
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\staticwebassets.development.json
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\scopedcss\bundle\bzbackend.styles.css
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.csproj.CopyComplete
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.dll
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\refint\bzbackend.dll
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.pdb
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\bzbackend.genruntimeconfig.cache
+E:\Workstation\New Apps\bzbackend\obj\Debug\net7.0\ref\bzbackend.dll
