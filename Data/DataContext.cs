@@ -17,6 +17,8 @@ namespace bzbackend.Data
         public DbSet<Sektor> Sektors { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<JIbadah> JIbadahs { get; set; }
+        public DbSet<KepalaKeluarga> KepalaKeluargas { get; set; }
+        public DbSet<LiturgiIbadah> LiturgiIbadahs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
