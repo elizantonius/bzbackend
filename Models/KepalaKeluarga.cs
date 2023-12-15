@@ -6,7 +6,7 @@ namespace bzbackend.Models
     {
         [Key]
 
-        public int Id { get; set; }
+        public int Kkelid { get; set; }
 
         [Required]
         public string namalengkap { get; set; }
@@ -14,6 +14,7 @@ namespace bzbackend.Models
         public string jeniskelamin { get; set; }
         public string tempatlahir { get; set; }
         public DateTime tangallahir { get; set; }
+        public string alamat { get; set; }
         public string pendidikan { get; set; }
         public string jenispekerjaan { get; set; }
         public string golongandarah { get; set; }
@@ -21,6 +22,9 @@ namespace bzbackend.Models
         public string statusdalamkeluarga { get; set; }
         public string baptis { get; set; }
         public string sidi { get; set; }
+        public string nokontak { get; set; }
+
+        public int Sektorid { get; set; }
 
     }
 }

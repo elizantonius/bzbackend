@@ -5,7 +5,7 @@ namespace bzbackend.Models
     public class LiturgiIbadah
     {
         [Key]
-        public int Id { get; set; }
+        public int Libid { get; set; }
 
         [Required]
         public string liturgi { get; set; }     //Liturgi yang digunakan
