@@ -12,8 +12,6 @@ namespace bzbackend.Repository
             _context = context;
         }
 
-      
-
         public Task<Sektor> GetById(int id)
         {
             return Task.FromResult(_context.Sektors.FirstOrDefault(s => s.Sektorid == id));

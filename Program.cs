@@ -20,6 +20,7 @@ builder.Services.AddScoped<IRenunganRepository, RenunganRepository>();
 builder.Services.AddScoped<IRole, RoleRepository>();
 builder.Services.AddScoped<ISektor, SektorRepository>();
 builder.Services.AddScoped<IUsers, UserRepository>();
+builder.Services.AddScoped<IKepalaKeluarga, KepalaKeluargaRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

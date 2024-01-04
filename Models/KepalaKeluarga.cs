@@ -25,6 +25,7 @@ namespace bzbackend.Models
         public string nokontak { get; set; }
 
         public int Sektorid { get; set; }
+        
 
     }
 }

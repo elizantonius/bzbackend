@@ -7,6 +7,6 @@ namespace bzbackend.Models
         [Key]
         public int Jemaatid { get; set; }
 
-        
+        public int Kkelid { get; set; }
     }
 }
