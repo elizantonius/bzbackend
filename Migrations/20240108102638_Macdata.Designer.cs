@@ -11,8 +11,8 @@ using bzbackend.Data;
 namespace bzbackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231204154132_updatemodel")]
-    partial class updatemodel
+    [Migration("20240108102638_Macdata")]
+    partial class Macdata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,31 +86,8 @@ namespace bzbackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Sektorid")
+                    b.Property<int>("Kkelid")
                         .HasColumnType("int");
-
-                    b.Property<string>("alamat")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("golongandarah")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("nama")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("nokontak")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("pekerjaan")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("tglkelahiran")
-                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Jemaatid");
 
@@ -119,9 +96,16 @@ namespace bzbackend.Migrations
 
             modelBuilder.Entity("bzbackend.Models.KepalaKeluarga", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Kkelid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<int>("Sektorid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("alamat")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("baptis")
                         .IsRequired()
@@ -146,6 +130,10 @@ namespace bzbackend.Migrations
                     b.Property<int>("nik")
                         .HasColumnType("int");
 
+                    b.Property<string>("nokontak")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("pendidikan")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -169,14 +157,14 @@ namespace bzbackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("Kkelid");
 
                     b.ToTable("KepalaKeluargas");
                 });
 
             modelBuilder.Entity("bzbackend.Models.LiturgiIbadah", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Libid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -228,7 +216,7 @@ namespace bzbackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("Libid");
 
                     b.ToTable("LiturgiIbadahs");
                 });
