@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace bzbackend.Migrations
 {
     /// <inheritdoc />
-    public partial class Macdata : Migration
+    public partial class newdata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

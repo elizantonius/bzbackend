@@ -34,9 +34,11 @@ namespace bzbackend.Repository
         {
             var dataindb = _context.JIbadahs.SingleOrDefault(x => x.JIbadahId == jibadah.JIbadahId);
             dataindb.tanggal = jibadah.tanggal;
-            dataindb.namakel = jibadah.namakel;
-            dataindb.pelayan = jibadah.liturgos;
-            dataindb.Usersid = jibadah.Usersid;
+            dataindb.tempat = jibadah.tempat;
+            dataindb.alamat = jibadah.alamat;
+            dataindb.liturgos = jibadah.liturgos;
+            dataindb.mc = jibadah.mc;
+            dataindb.pelayanan = jibadah.pelayanan;
             _context.SaveChangesAsync();
             return dataindb;
         }

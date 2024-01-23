@@ -11,8 +11,8 @@ using bzbackend.Data;
 namespace bzbackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240108102638_Macdata")]
-    partial class Macdata
+    [Migration("20240119165057_newdata")]
+    partial class newdata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
