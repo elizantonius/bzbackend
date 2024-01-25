@@ -4,35 +4,36 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace bzbackend.Migrations
+namespace WebApplication1.Migrations
 {
     /// <inheritdoc />
-    public partial class newdata : Migration
+    public partial class _initial2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
             migrationBuilder.CreateTable(
-                name: "Beritas",
+                name: "JIbadahs",
                 columns: table => new
                 {
-                    Beritaid = table.Column<int>(type: "int", nullable: false)
+                    JIbadahId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    judul = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    gambar = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    isi = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     tanggal = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    tempat = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    alamat = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    liturgos = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    mc = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    pelayanan = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Usersid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Beritas", x => x.Beritaid);
+                    table.PrimaryKey("PK_JIbadahs", x => x.JIbadahId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -47,27 +48,6 @@ namespace bzbackend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Jemaats", x => x.Jemaatid);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "JIbadahs",
-                columns: table => new
-                {
-                    JIbadahId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    tanggal = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    namakel = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    pelayan = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    liturgos = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Usersid = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JIbadahs", x => x.JIbadahId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -229,13 +209,10 @@ namespace bzbackend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Beritas");
+                name: "JIbadahs");
 
             migrationBuilder.DropTable(
                 name: "Jemaats");
-
-            migrationBuilder.DropTable(
-                name: "JIbadahs");
 
             migrationBuilder.DropTable(
                 name: "KepalaKeluargas");

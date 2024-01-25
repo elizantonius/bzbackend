@@ -1,5 +1,10 @@
-﻿using bzbackend.Models;
+﻿
+using AppDomain.Dto;
+using bzbackend.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace bzbackend.Data
 {
@@ -9,6 +14,7 @@ namespace bzbackend.Data
         {
 
         }
+
 
         public DbSet<Berita> Beritas { get; set; }
         public DbSet<Jemaat> Jemaats { get; set; }
@@ -20,31 +26,31 @@ namespace bzbackend.Data
         public DbSet<KepalaKeluarga> KepalaKeluargas { get; set; }
         public DbSet<LiturgiIbadah> LiturgiIbadahs { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            /*
-            modelBuilder.Entity<Users>()
-                .HasMany(b => b.Beritas)
-                .WithOne(u => u.Users)
-                .HasForeignKey(u => u.Usersid);
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    /*
+        //    modelBuilder.Entity<Users>()
+        //        .HasMany(b => b.Beritas)
+        //        .WithOne(u => u.Users)
+        //        .HasForeignKey(u => u.Usersid);
 
-            modelBuilder.Entity<Sektor>()
-                .HasMany(j => j.Jemaats)
-                .WithOne(s => s.Sektor)
-                .HasForeignKey(s => s.Sektorid);
+        //    modelBuilder.Entity<Sektor>()
+        //        .HasMany(j => j.Jemaats)
+        //        .WithOne(s => s.Sektor)
+        //        .HasForeignKey(s => s.Sektorid);
 
 
-            modelBuilder.Entity<Users>()
-                .HasMany(r => r.Renungans)
-                .WithOne(u => u.Users)
-                .HasForeignKey(u => u.Usersid);
+        //    modelBuilder.Entity<Users>()
+        //        .HasMany(r => r.Renungans)
+        //        .WithOne(u => u.Users)
+        //        .HasForeignKey(u => u.Usersid);
 
-            modelBuilder.Entity<Users>()
-                .HasMany(ji => ji.JIbadahs)
-                .WithOne(u => u.Users)
-                .HasForeignKey(u => u.Usersid);
-            */
+        //    modelBuilder.Entity<Users>()
+        //        .HasMany(ji => ji.JIbadahs)
+        //        .WithOne(u => u.Users)
+        //        .HasForeignKey(u => u.Usersid);
+        //    */
 
-        }
+        //}
     }
 }

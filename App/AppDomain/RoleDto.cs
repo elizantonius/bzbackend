@@ -1,4 +1,4 @@
-﻿namespace bzbackend.Dto
+﻿namespace AppDomain.Dto
 {
     public class RoleDto
     {
