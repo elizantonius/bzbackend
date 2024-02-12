@@ -24,7 +24,7 @@ namespace bzbackend.Data
         public DbSet<Users> Users { get; set; }
         public DbSet<JIbadah> JIbadahs { get; set; }
         public DbSet<KepalaKeluarga> KepalaKeluargas { get; set; }
-        public DbSet<LiturgiIbadah> LiturgiIbadahs { get; set; }
+        public DbSet<WartaJemaat> LiturgiIbadahs { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

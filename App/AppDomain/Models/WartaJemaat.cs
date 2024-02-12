@@ -2,7 +2,7 @@
 
 namespace bzbackend.Models
 {
-    public class LiturgiIbadah
+    public class WartaJemaat
     {
         [Key]
         public int Libid { get; set; }

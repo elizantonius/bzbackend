@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
+using bzbackend.Interfaces;
+using bzbackend.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,13 @@ builder.Services.AddDbContext<AplicationDbContext>(options =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IBeritaRepository, BeritaRepository>();
+builder.Services.AddScoped<IJIbadahRepository, JIbadahRepository>();
+builder.Services.AddScoped<IJemaatRepository, JemaatRepository>();
+builder.Services.AddScoped<IRenunganRepository, RenunganRepository>();
+builder.Services.AddScoped<ISektor, SektorRepository>();
+builder.Services.AddScoped<IKepalaKeluarga, KepalaKeluargaRepository>();
+builder.Services.AddScoped<IWartaMinggu,  WartaMingguRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

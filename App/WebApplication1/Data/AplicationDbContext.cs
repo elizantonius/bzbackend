@@ -14,6 +14,6 @@ namespace WebApplication1.Data
         public DbSet<Sektor> Sektors { get; set; }
         public DbSet<JIbadah> JIbadahs { get; set; }
         public DbSet<KepalaKeluarga> KepalaKeluargas { get; set; }
-        public DbSet<LiturgiIbadah> LiturgiIbadahs { get; set; }
+        public DbSet<WartaJemaat> WartaJemaats { get; set; }
     }
 }
