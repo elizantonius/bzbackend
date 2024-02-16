@@ -2,7 +2,6 @@ using Website.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddBlazorBootstrap();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
