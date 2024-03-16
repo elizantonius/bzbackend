@@ -2,7 +2,7 @@
 
 namespace bzbackend.Interfaces
 {
-    public interface IKepalaKeluarga
+    public interface IKeluarga
     {
         ICollection<KepalaKeluarga> GetKkels();
         KepalaKeluarga GetKkel(int Kkelid);

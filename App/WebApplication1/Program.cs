@@ -23,7 +23,7 @@ builder.Services.AddScoped<IJIbadahRepository, JIbadahRepository>();
 builder.Services.AddScoped<IJemaatRepository, JemaatRepository>();
 builder.Services.AddScoped<IRenunganRepository, RenunganRepository>();
 builder.Services.AddScoped<ISektor, SektorRepository>();
-builder.Services.AddScoped<IKepalaKeluarga, KepalaKeluargaRepository>();
+builder.Services.AddScoped<IKeluarga, KepalaKeluargaRepository>();
 builder.Services.AddScoped<IWartaMinggu,  WartaMingguRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

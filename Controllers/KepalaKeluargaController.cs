@@ -12,10 +12,10 @@ namespace bzbackend.Controllers
 
     public class KepalaKeluargaController : Controller
     {
-        private readonly IKepalaKeluarga _kepalaKeluarga;
+        private readonly IKeluarga _kepalaKeluarga;
         private readonly DataContext context;
 
-        public KepalaKeluargaController(IKepalaKeluarga kepalaKeluarga, DataContext context)
+        public KepalaKeluargaController(IKeluarga kepalaKeluarga, DataContext context)
         {
             _kepalaKeluarga = kepalaKeluarga;
         }

@@ -36,7 +36,20 @@ namespace bzbackend.Repository
         public async Task<Jemaat> Put(Jemaat jemaat)
         {
             var dataindb = _context.Jemaats.SingleOrDefault(x => x.Jemaatid == jemaat.Jemaatid);
-            dataindb.Kkelid = jemaat.Kkelid;
+            dataindb.namalengkap = jemaat.namalengkap;
+            dataindb.nik = jemaat.nik;
+            dataindb.jeniskelamin = jemaat.jeniskelamin;
+            dataindb.tempatlahir = jemaat.tempatlahir;
+            dataindb.tangallahir = jemaat.tangallahir;
+            dataindb.alamat = jemaat.alamat;
+            dataindb.pendidikan = jemaat.pendidikan;
+            dataindb.jenispekerjaan = jemaat.jenispekerjaan;
+            dataindb.golongandarah = jemaat.golongandarah;
+            dataindb.statusperkawinan = jemaat.statusperkawinan;
+            dataindb.statusdalamkeluarga = jemaat.statusdalamkeluarga;
+            dataindb.baptis = jemaat.baptis;
+            dataindb.sidi = jemaat.sidi;
+            dataindb.nokontak = jemaat.nokontak;
             _context.SaveChangesAsync();
             return dataindb;
             

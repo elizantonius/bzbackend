@@ -1,5 +1,6 @@
 using bzbackend.Interfaces;
 using bzbackend.Models;
+using AppDomain.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
@@ -11,15 +12,15 @@ namespace bzbackend.Controllers
 
     public class KepalaKeluargaController : Controller
     {
-        private readonly IKepalaKeluarga _kepalaKeluarga;
+        private readonly IKeluarga _kepalaKeluarga;
 
-        public KepalaKeluargaController(IKepalaKeluarga kepalaKeluarga)
+        public KepalaKeluargaController(IKeluarga kepalaKeluarga)
         {
             _kepalaKeluarga = kepalaKeluarga;
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<KepalaKeluarga>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Keluarga>))]
         public IActionResult GetKkel()
         {
             var kkel = _kepalaKeluarga.GetKkels();
@@ -30,7 +31,7 @@ namespace bzbackend.Controllers
         }
 
         [HttpGet("{Kkelid}")]
-        public async Task<ActionResult<KepalaKeluarga>> GetById(int Kkelid)
+        public async Task<ActionResult<Keluarga>> GetById(int Kkelid)
         {
             try
             {
@@ -45,7 +46,7 @@ namespace bzbackend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<KepalaKeluarga>> Post(KepalaKeluarga kkel)
+        public async Task<ActionResult<Keluarga>> Post(Keluarga kkel)
         {
             try
             {
@@ -62,11 +63,11 @@ namespace bzbackend.Controllers
         }
 
         [HttpPut("{Kkelid}")]
-        public async Task<ActionResult<KepalaKeluarga>> Put(int Kkelid, KepalaKeluarga kkel)
+        public async Task<ActionResult<Keluarga>> Put(int Kkelid, Keluarga kkel)
         {
             try
             {
-                if(Kkelid != kkel.Kkelid)
+                if(Kkelid != kkel.Id)
                 {
                     return BadRequest();
                 }
@@ -81,7 +82,7 @@ namespace bzbackend.Controllers
         }
 
         [HttpDelete("{Kkelid}")]
-        public async Task<ActionResult<KepalaKeluarga>> Deleted(int Kkelid)
+        public async Task<ActionResult<Keluarga>> Deleted(int Kkelid)
         {
             var hapusdata = await _kepalaKeluarga.Delete(Kkelid);
             if(hapusdata == null)

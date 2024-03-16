@@ -1,10 +1,11 @@
-﻿using bzbackend.Interfaces;
+﻿using AppDomain.Models;
+using bzbackend.Interfaces;
 using bzbackend.Models;
 using WebApplication1.Data;
 
 namespace bzbackend.Repository
 {
-    public class KepalaKeluargaRepository : IKepalaKeluarga
+    public class KepalaKeluargaRepository : IKeluarga
     {
         private readonly AplicationDbContext _context;
 
@@ -13,54 +14,40 @@ namespace bzbackend.Repository
             _context = context;
         }
 
-        public ICollection<KepalaKeluarga> GetKkels()
+        public ICollection<Keluarga> GetKkels()
         {
-            return _context.KepalaKeluargas.ToList();
+            return _context.Keluargas.ToList();
         }
 
-        public KepalaKeluarga GetKkel(int Kkelid)
+        public Keluarga GetKkel(int Kkelid)
         {
-            return _context.KepalaKeluargas.Where(kk => kk.Kkelid == Kkelid).FirstOrDefault();
+            return _context.Keluargas.Where(kk => kk.Id == Kkelid).FirstOrDefault();
         }
 
-        public Task<KepalaKeluarga> GetById(int Kkelid)
+        public Task<Keluarga> GetById(int Kkelid)
         {
-            return Task.FromResult(_context.KepalaKeluargas.FirstOrDefault(kk => kk.Kkelid == Kkelid));
+            return Task.FromResult(_context.Keluargas.FirstOrDefault(kk => kk.Id == Kkelid));
         }
 
-        public async Task<KepalaKeluarga> Post(KepalaKeluarga kkel)
+        public async Task<Keluarga> Post(Keluarga kkel)
         {
-            var tambah = await _context.KepalaKeluargas.AddAsync(kkel);
+            var tambah = await _context.Keluargas.AddAsync(kkel);
             await _context.SaveChangesAsync();
             return tambah.Entity;
         }
 
-        public async Task<KepalaKeluarga> Update(KepalaKeluarga kkel)
+        public async Task<Keluarga> Update(Keluarga kkel)
         {
-            var dataindb = _context.KepalaKeluargas.SingleOrDefault(x => x.Kkelid == kkel.Kkelid);
-            dataindb.namalengkap = kkel.namalengkap;
-            dataindb.nik = kkel.nik;
-            dataindb.jeniskelamin = kkel.jeniskelamin;
-            dataindb.tempatlahir = kkel.tempatlahir;
-            dataindb.tangallahir = kkel.tangallahir;
-            dataindb.alamat =kkel.alamat;
-            dataindb.pendidikan = kkel.pendidikan;
-            dataindb.jenispekerjaan = kkel.jenispekerjaan;
-            dataindb.golongandarah = kkel.golongandarah;
-            dataindb.statusperkawinan = kkel.statusperkawinan;
-            dataindb.statusdalamkeluarga = kkel.statusdalamkeluarga;
-            dataindb.baptis = kkel.baptis;
-            dataindb.sidi = kkel.sidi;
-            dataindb.nokontak = kkel.nokontak;
-            dataindb.Sektorid = kkel.Sektorid;
+            var dataindb = _context.Keluargas.SingleOrDefault(x => x.Id == kkel.Id);
+            
             _context.SaveChangesAsync();
             return dataindb;
 
         }
         public Task<bool> Delete(int Kkelid)
         {
-            var data = _context.KepalaKeluargas.Find(Kkelid);
-            _context.KepalaKeluargas.Remove(data);
+            var data = _context.Keluargas.Find(Kkelid);
+            _context.Keluargas.Remove(data);
             _context.SaveChanges();
             return Task.FromResult(true);
         }

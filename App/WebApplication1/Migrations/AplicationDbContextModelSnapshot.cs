@@ -19,6 +19,31 @@ namespace WebApplication1.Migrations
                 .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("AppDomain.Models.Keluarga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("KepalaKeluaragJemaatid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NomorKK")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Sektorid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KepalaKeluaragJemaatid");
+
+                    b.HasIndex("Sektorid");
+
+                    b.ToTable("Keluargas");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -283,21 +308,7 @@ namespace WebApplication1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Kkelid")
-                        .HasColumnType("int");
-
-                    b.HasKey("Jemaatid");
-
-                    b.ToTable("Jemaats");
-                });
-
-            modelBuilder.Entity("bzbackend.Models.KepalaKeluarga", b =>
-                {
-                    b.Property<int>("Kkelid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Sektorid")
+                    b.Property<int?>("KeluargaId")
                         .HasColumnType("int");
 
                     b.Property<string>("alamat")
@@ -354,12 +365,63 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Kkelid");
+                    b.HasKey("Jemaatid");
 
-                    b.ToTable("KepalaKeluargas");
+                    b.HasIndex("KeluargaId");
+
+                    b.ToTable("Jemaats");
                 });
 
-            modelBuilder.Entity("bzbackend.Models.LiturgiIbadah", b =>
+            modelBuilder.Entity("bzbackend.Models.Renungan", b =>
+                {
+                    b.Property<int>("Renunganid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Usersid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("doa")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("isirenungan")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("judulrenungan")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("nats")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("pembacaan")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Renunganid");
+
+                    b.ToTable("Renungans");
+                });
+
+            modelBuilder.Entity("bzbackend.Models.Sektor", b =>
+                {
+                    b.Property<int>("Sektorid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("nama")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Sektorid");
+
+                    b.ToTable("Sektors");
+                });
+
+            modelBuilder.Entity("bzbackend.Models.WartaJemaat", b =>
                 {
                     b.Property<int>("Libid")
                         .ValueGeneratedOnAdd()
@@ -415,56 +477,26 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("Libid");
 
-                    b.ToTable("LiturgiIbadahs");
+                    b.ToTable("WartaJemaats");
                 });
 
-            modelBuilder.Entity("bzbackend.Models.Renungan", b =>
+            modelBuilder.Entity("AppDomain.Models.Keluarga", b =>
                 {
-                    b.Property<int>("Renunganid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("bzbackend.Models.Jemaat", "KepalaKeluarag")
+                        .WithMany()
+                        .HasForeignKey("KepalaKeluaragJemaatid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("Usersid")
-                        .HasColumnType("int");
+                    b.HasOne("bzbackend.Models.Sektor", "Sektor")
+                        .WithMany()
+                        .HasForeignKey("Sektorid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("doa")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Navigation("KepalaKeluarag");
 
-                    b.Property<string>("isirenungan")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("judulrenungan")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("nats")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("pembacaan")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Renunganid");
-
-                    b.ToTable("Renungans");
-                });
-
-            modelBuilder.Entity("bzbackend.Models.Sektor", b =>
-                {
-                    b.Property<int>("Sektorid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("nama")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Sektorid");
-
-                    b.ToTable("Sektors");
+                    b.Navigation("Sektor");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -516,6 +548,18 @@ namespace WebApplication1.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("bzbackend.Models.Jemaat", b =>
+                {
+                    b.HasOne("AppDomain.Models.Keluarga", null)
+                        .WithMany("AnggotaKeluarga")
+                        .HasForeignKey("KeluargaId");
+                });
+
+            modelBuilder.Entity("AppDomain.Models.Keluarga", b =>
+                {
+                    b.Navigation("AnggotaKeluarga");
                 });
 #pragma warning restore 612, 618
         }

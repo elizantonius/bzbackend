@@ -4,7 +4,7 @@ using bzbackend.Models;
 
 namespace bzbackend.Repository
 {
-    public class KepalaKeluargaRepository : IKepalaKeluarga
+    public class KepalaKeluargaRepository : IKeluarga
     {
         private readonly DataContext _context;
 
