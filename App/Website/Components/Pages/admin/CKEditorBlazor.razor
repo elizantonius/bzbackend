@@ -2,14 +2,10 @@
 @inject IJSRuntime JSRuntime
 @rendermode InteractiveAuto
 
-
-
 <textarea @attributes="AdditionalAttributes"
           id="@Id"
           class="@CssClass"
           value="@CurrentValue"></textarea>
-
-
 
 @code {
     string _id;
@@ -29,16 +25,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-       _= calljs();
         await base.OnInitializedAsync();
     }
 
-   async Task calljs()
-    {
-        await Task.Delay(2000);
-        await JSRuntime.InvokeVoidAsync("displayTickerAlert1", "test", "AAA");
-
-    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

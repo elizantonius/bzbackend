@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Workstation\\bzbackend\\bzbackend.csproj": {}
+    "D:\\Source\\bzbackend\\bzbackend.csproj": {}
   },
   "projects": {
-    "D:\\Workstation\\bzbackend\\bzbackend.csproj": {
+    "D:\\Source\\bzbackend\\bzbackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workstation\\bzbackend\\bzbackend.csproj",
+        "projectUniqueName": "D:\\Source\\bzbackend\\bzbackend.csproj",
         "projectName": "bzbackend",
-        "projectPath": "D:\\Workstation\\bzbackend\\bzbackend.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Workstation\\bzbackend\\obj\\",
+        "projectPath": "D:\\Source\\bzbackend\\bzbackend.csproj",
+        "packagesPath": "C:\\Users\\ocph2\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\bzbackend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ocph2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -109,7 +114,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
