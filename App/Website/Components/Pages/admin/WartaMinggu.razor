@@ -1,0 +1,131 @@
+﻿@layout AdminLayout
+@page "/admin/wartaminggu"
+
+<h1>Data Warta Ibadah Minggu</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        @* <h3 class="card-title">DataTable with minimal features & hover style</h3> *@
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Liturgi Ibadah</th>
+                                    <th>Pemimpin Ibadah</th>
+                                    <th>Pelayan Pendamping</th>
+                                    <th>Pembacaan Alkitab</th>
+                                    <th>Tanggal</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Misc</td>
+                                    <td>PSP browser</td>
+                                    <td>PSP</td>
+                                    <td>-</td>
+                                    <td>C</td>
+                                </tr>
+                                <tr>
+                                    <td>Other browsers</td>
+                                    <td>All others</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>U</td>
+                                </tr>
+                            </tbody>
+                          
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<br />
+<hr />
+<h1>Input Warta Ibadah Minggu</h1>
+
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card ">
+            <div class="card-header">
+                @* <h3 class="card-title">Tambah Berita</h3> *@
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Liturgi</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Liturgi Ibadah">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Bacaan Alkitab</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pembacaan Alkitab">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Pemimpin Ibadah</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pemimpin Ibadah">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pelayan Pendamping</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pelayan Pendamping">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Majelis yang membaca Pengakuan Dosa</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pengakuan Dosa">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Majelis/Pelayan yang membaca Pembacaan Firman</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nama Majelis/Pelayan">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Majelis yang membaca Warta Jemaat</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nama Majelis">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Pelayanaan orang sakit</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pelayanaan orang sakit">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Kolektaan</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Kolektaan">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pemain Keyboard</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pemain Keyboard">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nyanyian yang digunakan pada saat Ibadah</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nyanyian">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Majelis Piket</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Majelis Piket">
+                    </div>
+                    <div class="form-check">
+                        <button type="submit" class="btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

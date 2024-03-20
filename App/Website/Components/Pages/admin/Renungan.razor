@@ -1,0 +1,69 @@
+﻿@layout AdminLayout
+@page "/admin/renungan"
+
+@rendermode InteractiveAuto
+
+@using Website.Data
+@using global::Website.Data
+@inject IJSRuntime JSRuntime
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Tambah Renungan</h3>
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Judul Renungan</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Judul Renungan">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nats</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nats Pembacaan Alkitab">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pembacaan Alkitab</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Pembacaan Alkitab">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Isi Renungan</label>
+                        <CKEditorBlazor Id="MyEditor1" @bind-Value="@editorOptions.InitialText"
+                                        UrlToPostImage="http://localhost:44301/api/qaiser/Upload">
+                        </CKEditorBlazor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Doa</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Doa">
+                    </div>
+                   
+                    <div class="form-check">
+                        <button type="submit" class="btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- /.card-body -->
+@code {
+    EditorOptions editorOptions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        editorOptions = new EditorOptions();
+        editorOptions.InitialText = "Isi Renungan";
+
+        var txt = await Task.Run(() => 1);
+    }
+
+
+}

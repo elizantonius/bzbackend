@@ -1,0 +1,128 @@
+﻿@layout AdminLayout
+@page "/admin/datajemaat"
+
+<h1>Input Data Jemaat</h1>
+
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card ">
+            <div class="card-header">
+                @* <h3 class="card-title">Tambah Berita</h3> *@
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama Lengkap</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nama Lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nik</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nik">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Jenis Kelamin</label>
+                        <select class="custom-select" name="jk" id="jk">
+                            <option>...</option>
+                            <option value="Laki-Laki">Laki-Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tempat Lahir</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tempat Lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Tanggal Lahir</label>
+                        <input type="date" id="birthday" name="birthday">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Alamat</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Alamat">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pendidikan</label>
+                        <select class="custom-select" name="Pendidikan" id="Pendidikan">
+                            <option>...</option>
+                            <option value="Paud">Paud</option>
+                            <option value="TK">TK</option>
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA">SMA</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Jenis Pekerjaan</label>
+                        <select class="custom-select" name="Pendidikan" id="Pendidikan">
+                        <option >...</option>
+                        <option value="PNS">PNS</option>
+                        <option value="Iburumahtangga">Ibu Rumah Tangga</option>
+                        <option value="Mahasiswa">Mahasiswa/Pelajar</option>
+                        </select>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Golongan Darah</label>
+                        <select class="custom-select" name="Pendidikan" id="Pendidikan">
+                        <option>...</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="O">O</option>
+                        <option value="AB">AB</option>
+                        </select>
+              
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Status Pernikahan</label>
+                        <select class="custom-select" name="Pendidikan" id="Pendidikan">
+                        <option>...</option>
+                        <option value="PNS">Sudah Nikah</option>
+                        <option value="Iburumahtangga">Belum Nikah</option>
+                        </select>
+                   
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Status Dalam Keluarga</label>
+                        <select class="custom-select" name="Pendidikan" id="Pendidikan">
+                        <option>...</option>
+                        <option value="suami">Suami</option>
+                        <option value="istri">Istri</option>
+                        <option value="anak">Anak</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Baptis</label>
+                        <select class="custom-select" name="Pendidikan" id="Pendidikan">
+                        <option>...</option>
+                        <option value="baptis">Sudah Baptis</option>
+                        <option value="belumbaptis">Belum Baptis</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Sidi</label>
+                        <select class="custom-select" name="Pendidikan" id="Pendidikan">
+                        <option>...</option>
+                        <option value="sidi">Sudah Sidi</option>
+                        <option value="belumsidi">Belum Sidi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">No Kontak</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="No Kontak">
+                    </div>
+                    <div class="form-check">
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
