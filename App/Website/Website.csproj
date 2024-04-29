@@ -10,5 +10,9 @@
     <Folder Include="wwwroot\admin\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AppDomain\AppDomain.csproj" />
+  </ItemGroup>
+
 
 </Project>

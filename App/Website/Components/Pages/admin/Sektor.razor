@@ -1,5 +1,7 @@
 ﻿@layout AdminLayout
 @page "/admin/sektor"
+@inject HttpClient Http
+
 
 <h1>Input Data Sektor</h1>
 
@@ -18,14 +20,21 @@
             <form>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Sektor</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Sektor">
+                        <label>Sektor</label>
+                        <InputText></InputText>
                     </div>
                     <div class="form-check">
-                        <button type="submit" class="btn btn-primary">Kirim</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </section>
+
+@code{
+
+
+    public Sektor sektor { get; set; } = new Sektor();
+
+}
