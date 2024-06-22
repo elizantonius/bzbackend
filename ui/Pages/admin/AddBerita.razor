@@ -1,0 +1,134 @@
+﻿@layout AdminLayout
+@page "/admin/addberita"
+@using System.Text.Json
+@using ui.Data
+@inject HttpClient http
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Tambah Berita</h3>
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Judul Berita</label>
+                        <input type="text" class="form-control" @bind-value="Model.judul" placeholder="Judul Berita">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Isi Berita</label>
+                        <CKEditorBlazor Id="MyEditor1" @bind-Value="Model.isi">
+                        </CKEditorBlazor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Foto Berita</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <InputFile OnChange="Upload" class="form-control" multiple />
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tanggal</label>
+                        <input type="date" class="form-control" @bind-value="Model.tanggal" placeholder="Liturgi Ibadah">
+                    </div>
+                    <div class="form-check">
+                        <button type="button" @onclick="Simpan" class="btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- /.card-body -->
+@code {
+    Berita Model = new Berita();
+    List<Berita> beritas = new List<Berita>();
+    EditorOptions editorOptions;
+    //IBrowserFile browserFile;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        int id = 3;
+        var hasil = await http.GetFromJsonAsync<List<Berita>>("api/Berita");
+
+        beritas = hasil;
+    }
+
+
+    private async Task Upload(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            using (var fileStream = new MemoryStream())
+            {
+                await e.File.OpenReadStream().CopyToAsync(fileStream);
+                var data = fileStream.ToArray();
+                Model.FileData = data;
+                fileStream.Close();
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+
+    }
+
+    async Task Simpan()
+    {
+        try
+        {
+            if (Model.Beritaid <= 0)
+            {
+                var stringContent = JsonSerializer.Serialize(Model);
+                var response = await http.PostAsJsonAsync("api/Berita", Model);
+                if (response.IsSuccessStatusCode)
+                {
+                    //success
+                    var resultString = await response.Content.ReadAsStringAsync();
+                    Berita result = JsonSerializer.Deserialize<Berita>(resultString);
+                    beritas.Add(result);
+
+                }
+                else
+                {
+                    //not success
+                }
+            }
+            else
+            {
+                var response = await http.PutAsJsonAsync($"api/Berita/{Model.Beritaid}", Model);
+                if (response.IsSuccessStatusCode)
+                {
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+
+
+
+}

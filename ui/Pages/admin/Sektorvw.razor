@@ -1,0 +1,135 @@
+﻿@layout AdminLayout
+@page "/admin/sektorvw"
+@using System.Text.Json
+@inject HttpClient Http
+
+
+
+<h1>Input Data Sektor</h1>
+
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card ">
+            <div class="card-header">
+                @* <h3 class="card-title">Tambah Berita</h3> *@
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Sektor</label>
+                        <input type="text" @bind-value="Model.nama" />
+                    </div>
+                    <div class="form-check">
+                        <button type="button" @onclick="New" class="btn btn-primary">Baru</button>
+                        <button type="button" @onclick="Save" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<h1>Daftar Data Sektor</h1>
+
+<section class="content">
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nama Sektor</th>
+                    <th scope="col">Aksi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sektor in sektors)
+                {
+
+
+                    <tr>
+                        <td>@sektor.nama</td>
+                        <td>
+                            <button type="button" @onclick="@(()=>Edit(sektor))" class="btn btn-primary">Edit</button> |
+                            <button type="button" @onclick="@(()=>Delete(sektor))" class="btn btn-danger">Delete</button> |
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+@code {
+    List<Sektor> sektors = new List<Sektor>();
+    Sektor Model = new Sektor();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        int id = 3;
+        var hasil = await Http.GetFromJsonAsync<List<Sektor>>("api/Sektor");
+
+        sektors = hasil;
+    }
+
+    async Task Save()
+    {
+        if (Model.Sektorid <= 0)
+        {
+            var response = await Http.PostAsJsonAsync("api/Sektor", Model);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultString = await response.Content.ReadAsStringAsync();
+                Sektor result = JsonSerializer.Deserialize<Sektor>(resultString);
+                sektors.Add(result);
+            }
+
+        }
+        else
+        {
+            var response = await Http.PutAsJsonAsync($"api/Sektor/{Model.Sektorid}", Model);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+        }
+
+    }
+
+    async Task Edit(Sektor ex)
+    {
+        Model = ex;
+    }
+
+
+    async Task New()
+    {
+        Model = new Sektor();
+    }
+
+
+    async Task Delete(Sektor sektor)
+    {
+        var response = await Http.DeleteAsync($"api/Sektor/{sektor.Sektorid}");
+        if (response.IsSuccessStatusCode)
+        {
+            sektors.Remove(sektor);
+        }
+    }
+    private void OnHideModalClick(MouseEventArgs e)
+    {
+       
+    }
+    private async Task showModal(object e)
+    {
+    }
+}

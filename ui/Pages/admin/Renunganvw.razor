@@ -1,0 +1,93 @@
+﻿@layout AdminLayout
+@page "/admin/renunganvw"
+@using System.Text.Json
+@using ui.Data
+@inject HttpClient Http
+
+@inject IJSRuntime JSRuntime
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Tambah Renungan</h3>
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Judul Renungan</label>
+                        <input type="text" class="form-control" @bind-value="Model.judulrenungan" placeholder="Judul Renungan">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nats</label>
+                        <input type="text" class="form-control" @bind-value="Model.nats" placeholder="Nats Pembacaan Alkitab">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pembacaan Alkitab</label>
+                        <input type="text" class="form-control" @bind-value="Model.pembacaan" placeholder="Pembacaan Alkitab">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Isi Renungan</label>
+                        <CKEditorBlazor Id="MyEditor1" @bind-Value="Model.isirenungan"
+                                        UrlToPostImage="http://localhost:44301/api/qaiser/Upload">
+                        </CKEditorBlazor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Doa</label>
+                        <input type="text" class="form-control" @bind-value="Model.doa" placeholder="Doa">
+                    </div>
+                   
+                    <div class="form-check">
+                        <button type="submit"   @onclick="Simpan" class="btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- /.card-body -->
+@code {
+    List<Renungan> renungans = new List<Renungan>();
+    Renungan Model = new Renungan();
+
+    EditorOptions editorOptions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        editorOptions = new EditorOptions();
+        editorOptions.InitialText = "Isi Renungan";
+
+        var txt = await Task.Run(() => 1);
+    }
+
+    async Task Simpan()
+    {
+        if(Model.Renunganid <= 0)
+        {
+            var response = await Http.PostAsJsonAsync("api/Renungan", Model);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultString = await response.Content.ReadAsStringAsync();
+                Renungan result = JsonSerializer.Deserialize<Renungan>(resultString);
+                renungans.Add(result);
+            }
+        }
+        else
+        {
+            var respones = await Http.PutAsJsonAsync($"api/Renungan/{Model.Renunganid}", Model);
+            if (respones.IsSuccessStatusCode)
+            {
+                
+            }
+        }
+    }
+
+
+}

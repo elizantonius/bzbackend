@@ -1,0 +1,189 @@
+﻿@layout AdminLayout
+@page "/admin/wartaminggu"
+@using System.Text.Json
+@inject HttpClient Http
+
+<h1>Data Warta Ibadah Minggu</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        @* <h3 class="card-title">DataTable with minimal features & hover style</h3> *@
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Liturgi Ibadah</th>
+                                    <th>Pemimpin Ibadah</th>
+                                    <th>Pelayan Pendamping</th>
+                                    <th>Pembacaan Alkitab</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var warta in wartas)
+                                {
+                                    <tr>
+                                        <td>@warta.liturgi</td>
+                                        <td>@warta.PemimpinIbadah</td>
+                                        <td>@warta.Pendamping</td>
+                                        <td>@warta.Bacaan</td>
+                                        <td>@warta.Tanggal</td>
+                                        <td>
+                                            <button type="button" @onclick="(()=>Edit(warta))" class="btn btn-primary">Edit</button> |
+                                            <button type="button" @onclick="(()=>Hapus(warta))" class="btn btn-danger">Delete</button> |
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                          
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<br />
+<hr />
+<h1>Input Warta Ibadah Minggu</h1>
+
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card ">
+            <div class="card-header">
+                @* <h3 class="card-title">Tambah Berita</h3> *@
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Liturgi</label>
+                        <input type="email" class="form-control" @bind-value="Model.liturgi" placeholder="Liturgi Ibadah">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tanggal</label>
+                        <input type="date" class="form-control" @bind-value="Model.Tanggal" placeholder="Liturgi Ibadah">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Bacaan Alkitab</label>
+                        <input type="email" class="form-control" @bind-value="Model.Bacaan" placeholder="Pembacaan Alkitab">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Pemimpin Ibadah</label>
+                        <input type="email" class="form-control" @bind-value="Model.PemimpinIbadah" placeholder="Pemimpin Ibadah">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pelayan Pendamping</label>
+                        <input type="email" class="form-control" @bind-value="Model.Pendamping" placeholder="Pelayan Pendamping">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Majelis yang membaca Pengakuan Dosa</label>
+                        <input type="email" class="form-control" @bind-value="Model.PengakuanDosa" placeholder="Pengakuan Dosa">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Majelis/Pelayan yang membaca Pembacaan Firman</label>
+                        <input type="email" class="form-control" @bind-value="Model.Pembacaan" placeholder="Nama Majelis/Pelayan">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Majelis yang membaca Warta Jemaat</label>
+                        <input type="email" class="form-control" @bind-value="Model.PembacaWJ" placeholder="Nama Majelis">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Pelayanaan orang sakit</label>
+                        <input type="email" class="form-control" @bind-value="Model.PelayanaanOS" placeholder="Pelayanaan orang sakit">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Kolektaan</label>
+                        <input type="email" class="form-control" @bind-value="Model.Kolektaan" placeholder="Kolektaan">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pemain Keyboard</label>
+                        <input type="email" class="form-control" @bind-value="Model.PemainKeyboard" placeholder="Pemain Keyboard">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nyanyian yang digunakan pada saat Ibadah</label>
+                        <input type="email" class="form-control" @bind-value="Model.Nyanyian" placeholder="Nyanyian">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Majelis Piket</label>
+                        <input type="email" class="form-control" @bind-value="Model.MajelisPiket" placeholder="Majelis Piket">
+                    </div>
+                    <div class="form-check">
+                        <button type="submit" @onclick="Simpan" class="btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+@code {
+
+    List<WartaJemaat> wartas = new List<WartaJemaat>();
+    WartaJemaat Model = new WartaJemaat();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var hasil = await Http.GetFromJsonAsync<List<WartaJemaat>>("api/WartaMinggu");
+        wartas = hasil;
+    }
+
+
+    async Task Simpan()
+    {
+        if(Model.Libid <= 0)
+        {
+            var response = await Http.PostAsJsonAsync("api/WartaMinggu", Model);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultString = await response.Content.ReadAsStringAsync();
+                WartaJemaat result = JsonSerializer.Deserialize<WartaJemaat>(resultString);
+                wartas.Add(result);
+            }
+        }
+        else
+        {
+            var response = await Http.PutAsJsonAsync($"api/WartaMinggu/{Model.Libid}", Model);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+        }
+    }
+
+    async Task Edit(WartaJemaat ex)
+    {
+        Model = ex;
+    }
+
+    async Task Hapus(WartaJemaat warta)
+    {
+        var response = await Http.DeleteAsync($"api/WartaMinggu/{warta.Libid}");
+        if (response.IsSuccessStatusCode)
+        {
+            wartas.Remove(warta);
+        }
+    }
+}

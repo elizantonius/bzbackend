@@ -1,0 +1,237 @@
+﻿@layout Layout.Admin.AdminLayout
+@page "/admin/datajemaat"
+@using System.Text.Json
+@using Microsoft.AspNetCore.Authorization
+@inject HttpClient Http
+
+@attribute [Authorize]
+<h1>Daftar Jemaat</h1>
+
+<section class="content">
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Daftar Nama Jemaat</th>
+                    <th scope="col">Aksi</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var jemaat in jemaats)
+                {
+
+                    <tr>
+                        <td>@jemaat.namalengkap</td>
+                        <td>                        
+                            <button type="button" @onclick="@(()=>Edit(jemaat))" class="btn btn-primary">Edit</button> |
+                            <button type="button" @onclick="@(()=>Delete(jemaat))" class="btn btn-danger">Delete</button> |
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+</section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<h1>Input Data Jemaat</h1>
+
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card ">
+            <div class="card-header">
+                @* <h3 class="card-title">Tambah Berita</h3> *@
+
+
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama Lengkap</label>
+                        <input class="form-control" @bind-value="Model.namalengkap" placeholder="Nama Lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Nik</label>
+                        <input type="email" class="form-control" @bind-value="Model.nik" placeholder="Nik">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Jenis Kelamin</label>
+                        <select class="custom-select" @bind="Model.jeniskelamin">
+                            <option>...</option>
+                            <option value="Laki-Laki">Laki-Laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tempat Lahir</label>
+                        <input type="email" class="form-control" @bind-value="Model.tempatlahir" placeholder="Tempat Lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Tanggal Lahir</label>
+                        <input type="date" @bind-value="Model.tangallahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Alamat</label>
+                        <input type="email" class="form-control" @bind="Model.alamat" placeholder="Alamat">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pendidikan</label>
+                        <select class="custom-select" @bind="Model.pendidikan">
+                            <option>...</option>
+                            <option value="Paud">Paud</option>
+                            <option value="TK">TK</option>
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA">SMA</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Jenis Pekerjaan</label>
+                        <select class="custom-select" @bind="Model.jenispekerjaan">
+                            <option>...</option>
+                            <option value="PNS">PNS</option>
+                            <option value="IRT">Ibu Rumah Tangga</option>
+                            <option value="Mahasiswa">Mahasiswa/Pelajar</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Golongan Darah</label>
+                        <select class="custom-select" @bind="Model.golongandarah">
+                            <option>...</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="O">O</option>
+                            <option value="AB">AB</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Status Pernikahan</label>
+                        <select class="custom-select" @bind="Model.statusperkawinan">
+                            <option>...</option>
+                            <option value="Nikah">Sudah Nikah</option>
+                            <option value="Belum Nikah">Belum Nikah</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Status Dalam Keluarga</label>
+                        <select class="custom-select" @bind="Model.statusdalamkeluarga">
+                            <option>...</option>
+                            <option value="suami">Suami</option>
+                            <option value="istri">Istri</option>
+                            <option value="anak">Anak</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Baptis</label>
+                        <select class="custom-select" @bind="Model.baptis">
+                            <option>...</option>
+                            <option value="baptis">Sudah Baptis</option>
+                            <option value="belum baptis">Belum Baptis</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Sidi</label>
+                        <select class="custom-select" @bind="Model.sidi">
+                            <option>...</option>
+                            <option value="Sidi">Sudah Sidi</option>
+                            <option value="Belum Sidi">Belum Sidi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">No Kontak</label>
+                        <input type="email" class="form-control" @bind-value="Model.nokontak" placeholder="No Kontak">
+                    </div>
+                    <div class="form-check">
+                        <button type="button" @onclick="Simpan" class="btn btn-primary">Kirim</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@code {
+
+
+
+    List<Jemaat> jemaats = new List<Jemaat>();
+    Jemaat Model = new Jemaat();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var hasil = await Http.GetFromJsonAsync<List<Jemaat>>("api/Jemaat");
+
+        jemaats = hasil;
+    }
+
+    async Task Simpan()
+    {
+        if(Model.Jemaatid <= 0)
+        {
+            var response = await Http.PostAsJsonAsync("api/Jemaat", Model);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultString = await response.Content.ReadAsStringAsync();
+                Jemaat result = JsonSerializer.Deserialize<Jemaat>(resultString);
+                jemaats.Add(result);
+            }
+        }
+        else
+        {
+            var response = await Http.PutAsJsonAsync($"api/Jemaat/{Model.Jemaatid}", Model);
+            if (response.IsSuccessStatusCode)
+            {
+
+            }
+        }
+
+    }
+
+    async Task Edit(Jemaat ex)
+    {
+        Model = ex;
+    }
+
+    async Task Delete(Jemaat jemaat)
+    {
+        var response = await Http.DeleteAsync($"api/Jemaat/{jemaat.Jemaatid}");
+        if (response.IsSuccessStatusCode)
+        {
+            jemaats.Remove(jemaat);
+        }
+    }
+}
