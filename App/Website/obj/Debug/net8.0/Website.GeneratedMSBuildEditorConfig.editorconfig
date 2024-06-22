@@ -1,0 +1,131 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Website
+build_property.RootNamespace = Website
+build_property.ProjectDir = D:\Workstation\bzbackend\App\Website\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Workstation\bzbackend\App\Website
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Workstation/bzbackend/App/Website/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Admin/AdminLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQWRtaW5cQWRtaW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Admin/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQWRtaW5cRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Admin/SideBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQWRtaW5cU2lkZUJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Admin/TopBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQWRtaW5cVG9wQmFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Empty.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcRW1wdHkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcRm9vdGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Headers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcSGVhZGVycy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/Headers2.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcSGVhZGVyczIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/AboutPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBYm91dFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/admin/AddBerita.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZGRCZXJpdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/admin/CKEditorBlazor.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxDS0VkaXRvckJsYXpvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/admin/DataJemaat.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxEYXRhSmVtYWF0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/admin/Renungan.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxSZW51bmdhbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/admin/Sektor.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxTZWt0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/admin/WartaMinggu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxXYXJ0YU1pbmdndS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/Berita.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCZXJpdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Data/CKEditorBlazor1.razor]
+build_metadata.AdditionalFiles.TargetPath = RGF0YVxDS0VkaXRvckJsYXpvcjEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/AboutLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQWJvdXRMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-wxs4yjl81f
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-4xpicsu201
+
+[D:/Workstation/bzbackend/App/Website/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-zwyt3nssqq
