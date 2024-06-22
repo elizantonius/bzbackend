@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bzbackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9878f4ad9a0dbc24db6c9a437306f4e98e5b97f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac035bfde8e65ed48dd7b36c3cf2708425e1f1d0")]
 [assembly: System.Reflection.AssemblyProductAttribute("bzbackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bzbackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
