@@ -80,6 +80,7 @@
                 await e.File.OpenReadStream().CopyToAsync(fileStream);
                 var data = fileStream.ToArray();
                 Model.FileData = data;
+                Model.gambar = e.File.Name;
                 fileStream.Close();
             }
 

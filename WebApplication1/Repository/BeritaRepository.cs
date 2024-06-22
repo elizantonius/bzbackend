@@ -9,8 +9,8 @@ namespace bzbackend.Repository
         private readonly AplicationDbContext _context;
         public BeritaRepository(AplicationDbContext context)
         {
-            _context = context; 
-                
+            _context = context;
+
         }
 
         public ICollection<Berita> GetBeritas()
@@ -18,7 +18,7 @@ namespace bzbackend.Repository
             return _context.Beritas.ToList();
         }
 
-        public Task<Berita> GetById(int  id)
+        public Task<Berita> GetById(int id)
         {
             return Task.FromResult(_context.Beritas.FirstOrDefault(b => b.Beritaid == id));
         }
@@ -30,6 +30,16 @@ namespace bzbackend.Repository
         */
         public async Task<Berita> Post(Berita berita)
         {
+            var filename = Path.GetRandomFileName();
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "BeritaImg");
+            if (!Directory.Exists(filepath))
+            {
+                Directory.CreateDirectory(filepath);
+            }
+
+            var completepath = Path.Combine(filepath, filename);
+            File.WriteAllBytes(completepath, berita.FileData);
+            berita.gambar = filename;
             var hasil = await _context.Beritas.AddAsync(berita);
             await _context.SaveChangesAsync();
             return hasil.Entity;
@@ -37,12 +47,11 @@ namespace bzbackend.Repository
 
         public async Task<Berita> Put(Berita berita)
         {
-            var dataindb = _context.Beritas.SingleOrDefault(x=>x.Beritaid==berita.Beritaid);
+            var dataindb = _context.Beritas.SingleOrDefault(x => x.Beritaid == berita.Beritaid);
             dataindb.judul = berita.judul;
             dataindb.gambar = berita.gambar;
             dataindb.isi = berita.isi;
             dataindb.tanggal = berita.tanggal;
-            dataindb.Usersid = berita.Usersid;
             _context.SaveChangesAsync();
             return dataindb;
         }

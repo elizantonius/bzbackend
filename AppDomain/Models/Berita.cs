@@ -9,12 +9,12 @@ namespace AppDomain.Models
         public int Beritaid { get; set; }
 
         [Required]
-        public String judul { get; set; }
-        public String gambar { get; set; }
-        public String isi { get; set; }
+        public string judul { get; set; }
+        public string? gambar { get; set; }
+        public string isi { get; set; }
         public DateTime tanggal { get; set; }
 
-        public int Usersid { get; set; }
+        //public int Usersid { get; set; }
         //public Users Users { get; set; }
 
         [NotMapped]

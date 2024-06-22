@@ -22,4 +22,8 @@
     <ProjectReference Include="..\AppDomain\AppDomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BeritaImg\" />
+  </ItemGroup>
+
 </Project>

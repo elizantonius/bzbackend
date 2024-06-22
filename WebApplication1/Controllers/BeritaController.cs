@@ -1,6 +1,8 @@
 ﻿using AppDomain.Interfaces;
 using AppDomain.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net.Mime;
 using WebApplication1.Data;
 
 namespace WebApplication1.Controllers
@@ -85,6 +87,15 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
             return NoContent();
+        }
+
+        [HttpGet("download")]
+        public async Task<IActionResult> Download(string filename)
+        {
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "BeritaImg");
+            var completepath = Path.Combine(filepath, filename);
+            var bytes = await System.IO.File.ReadAllBytesAsync(completepath);
+            return File(bytes, "application/octet-stream", Path.GetFileName(completepath)+".png");
         }
     }
 }
