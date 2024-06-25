@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
             return Ok(bertas);
         }
 
-        [HttpGet("{BeritaId}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Berita>> GetById(int id)
         {
             try

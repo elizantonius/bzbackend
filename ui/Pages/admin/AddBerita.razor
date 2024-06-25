@@ -1,8 +1,10 @@
 ﻿@layout AdminLayout
 @page "/admin/addberita"
+@page "/admin/addberita/{Id:int}"
 @using System.Text.Json
 @using ui.Data
 @inject HttpClient http
+@inject NavigationManager NavManager;
 
 <!-- Main content -->
 <section class="content">
@@ -44,7 +46,7 @@
                         <input type="date" class="form-control" @bind-value="Model.tanggal" placeholder="Liturgi Ibadah">
                     </div>
                     <div class="form-check">
-                        <button type="button" @onclick="Simpan" class="btn-primary">Kirim</button>
+                        <button type="button" @onclick="Simpan" class="btn btn-primary">Kirim</button>
                     </div>
                 </div>
             </form>
@@ -56,6 +58,9 @@
 
 <!-- /.card-body -->
 @code {
+    [Parameter]
+    public int Id { get; set; }
+
     Berita Model = new Berita();
     List<Berita> beritas = new List<Berita>();
     EditorOptions editorOptions;
@@ -63,7 +68,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-
+        if(Id >= 0)
+        {
+            Model = await http.GetFromJsonAsync<Berita>($"api/Berita/{Id}");
+        }
         int id = 3;
         var hasil = await http.GetFromJsonAsync<List<Berita>>("api/Berita");
 
@@ -107,6 +115,7 @@
                     var resultString = await response.Content.ReadAsStringAsync();
                     Berita result = JsonSerializer.Deserialize<Berita>(resultString);
                     beritas.Add(result);
+                    NavManager.NavigateTo("admin/berita");
 
                 }
                 else

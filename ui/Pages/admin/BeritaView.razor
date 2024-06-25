@@ -1,0 +1,63 @@
+﻿@layout AdminLayout
+@page "/admin/berita"
+@using System.Text.Json
+@inject HttpClient Http
+@inject NavigationManager NavManager;
+
+<h3><b>Daftar Berita</b></h3>
+<a href="admin/addberita" class="btn btn-primary">Tambah Berita Baru</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Judul Berita</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Aksi</th>
+
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var berita in beritas)
+        {
+
+            <tr>   
+                <td>@berita.judul</td>
+                <td>@berita.tanggal</td>
+                <td>
+                    <button  type="button" @onclick="(()=>Edit(berita))" class="btn btn-warning">Edit</button> |
+                    <button type="button" @onclick="@(()=>Delete(berita))" class="btn btn-danger">Hapus</button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+
+    Berita Model = new Berita();
+    List<Berita> beritas = new List<Berita>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var hasil = await Http.GetFromJsonAsync<List<Berita>>("api/Berita");
+        beritas = hasil;
+    }
+
+    async Task Delete(Berita berita)
+    {
+        var response = await Http.DeleteAsync($"api/Berita/{berita.Beritaid}");
+        if (response.IsSuccessStatusCode)
+        {
+            beritas.Remove(berita);
+        }
+    }
+
+    async Task Edit(Berita berita)
+    {
+        Model = berita;
+        NavManager.NavigateTo($"admin/addberita/{berita.Beritaid}");
+    }
+
+}

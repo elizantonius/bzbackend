@@ -2605,5 +2605,9 @@
     <ProjectReference Include="..\AppDomain\AppDomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Pages\admin\BeritaView.razor" />
+  </ItemGroup>
+
 
 </Project>
